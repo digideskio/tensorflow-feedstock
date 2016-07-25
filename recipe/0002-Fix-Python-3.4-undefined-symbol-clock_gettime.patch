@@ -1,0 +1,26 @@
+From 12b413c455617fcdd45012238e824b5f7287e56d Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 26 Jul 2016 11:35:34 +0100
+Subject: [PATCH 2/2] Fix 'Python 3.4 undefined symbol: clock_gettime'
+
+https://github.com/tensorflow/tensorflow/issues/121
+---
+ tensorflow/tensorflow.bzl |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/tensorflow/tensorflow.bzl b/tensorflow/tensorflow.bzl
+index db7c130..586aabb 100644
+--- a/tensorflow/tensorflow.bzl
++++ b/tensorflow/tensorflow.bzl
+@@ -624,7 +624,7 @@ def tf_custom_op_library(name, srcs=[], gpu_srcs=[], deps=[]):
+   )
+ 
+ def tf_extension_linkopts():
+-  return []  # No extension link opts
++  return ["-lrt"] # For clock_gettime(), gh-121
+ 
+ def tf_extension_copts():
+   return []  # No extension c opts
+-- 
+1.7.1
+

@@ -1,0 +1,34 @@
+From 5a7c7e09a486080e1fd65fd85b642239691ca70b Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sun, 24 Jul 2016 16:41:47 +0100
+Subject: [PATCH] conda: Change lib64 to lib
+
+---
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 98048ba..b0f9efa 100755
+--- a/configure
++++ b/configure
+@@ -134,7 +134,7 @@ while true; do
+   fi
+ 
+   if [ "$OSNAME" == "Linux" ]; then
+-    CUDA_RT_LIB_PATH="lib64/libcudart.so${TF_CUDA_EXT}"
++    CUDA_RT_LIB_PATH="lib/libcudart.so${TF_CUDA_EXT}"
+   elif [ "$OSNAME" == "Darwin" ]; then
+     CUDA_RT_LIB_PATH="lib/libcudart${TF_CUDA_EXT}.dylib"
+   fi
+@@ -179,7 +179,7 @@ while true; do
+   fi
+ 
+   if [ "$OSNAME" == "Linux" ]; then
+-    CUDA_DNN_LIB_PATH="lib64/libcudnn.so${TF_CUDNN_EXT}"
++    CUDA_DNN_LIB_PATH="lib/libcudnn.so${TF_CUDNN_EXT}"
+     CUDA_DNN_LIB_ALT_PATH="libcudnn.so${TF_CUDNN_EXT}"
+   elif [ "$OSNAME" == "Darwin" ]; then
+     CUDA_DNN_LIB_PATH="lib/libcudnn${TF_CUDNN_EXT}.dylib"
+-- 
+2.9.0
+
